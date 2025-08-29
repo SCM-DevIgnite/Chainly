@@ -8,15 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f6f7ecf-157a-4d27-aeb5-f549e6b38ae8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Chainly.Data/Constants/Modules.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chainly.Data/Constants/Permissions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Chainly.Data/Constants/Roles.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly.Data/Chainly.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/Chainly.Data.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly.Data/Helpers/DBIntializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/Helpers/DBIntializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly.Data/MailService/EmailConfigration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/MailService/EmailConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly.Data/MailService/EmailSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/MailService/EmailSender.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly/Controllers/AuthenticationController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chainly/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chainly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chainly/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chainly/Controllers/AuthenticationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly/Controllers/AuthenticationController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756498300052</updated>
       <workItem from="1756498301271" duration="841000" />
-      <workItem from="1756499172225" duration="7362000" />
+      <workItem from="1756499172225" duration="10192000" />
     </task>
     <servers />
   </component>

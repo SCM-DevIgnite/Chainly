@@ -220,13 +220,13 @@ namespace Chainly.Controllers
 
 
             foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
+{
+    claims.Add(new Claim(ClaimTypes.Role, role));
 
-                claims.AddRange((await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role)))
-                    .Where(c => c.Type == "Permission")
-                    .Select(c => new Claim("Permission", c.Value)));
-            }
+    claims.AddRange((await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role)))
+        .Where(c => c.Type == "Permission")
+        .Select(c => new Claim("Permission", c.Value)));
+}
 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
@@ -236,7 +236,7 @@ namespace Chainly.Controllers
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["DurationInMinutes"])),
+                expires: DateTime.Now.AddMinutes(Convert.ToInt32(jwtSettings["DurationInMinutes"])),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
