@@ -12,7 +12,14 @@ namespace Chainly.Data.Models
         public string Name { get; set; }
         public string LocationLongitude { get; set; }
         public string LocationLatitude { get; set; }
-        
+        public string ProductType { get; set; }
+        public string Sector { get; set; }         
+        public string FacilityType { get; set; }    
+
+       
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
+
         public ICollection<SupplierMaterial> SupplierMaterials { get; set; }
     }
 }
