@@ -12,7 +12,7 @@ public static class Permissions
             $"Permissions.{module}.Update",
         };
     }
-    
+
     public static List<string> GenerateAllPermissions()
     {
         var allPermissions = new List<string>();
@@ -21,9 +21,10 @@ public static class Permissions
         {
             allPermissions.AddRange(GeneratePermissionsList(module));
         }
+
         return allPermissions;
     }
-    
+
     public static class Users
     {
         public const string View = "Permissions.Users.View";
@@ -38,5 +39,13 @@ public static class Permissions
         public const string Delete = "Permissions.Roles.Delete";
         public const string Create = "Permissions.Roles.Create";
         public const string Update = "Permissions.Roles.Update";
+    }
+
+    public static class Suppliers
+    {
+        public const string View = "Permissions.Suppliers.View";
+        public const string Delete = "Permissions.Suppliers.Delete";
+        public const string Create = "Permissions.Suppliers.Create";
+        public const string Update = "Permissions.Suppliers.Update";
     }
 }

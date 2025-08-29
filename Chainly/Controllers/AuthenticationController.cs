@@ -11,6 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Chainly.Data.Constants;
 
 namespace Chainly.Controllers
 {
@@ -25,10 +26,10 @@ namespace Chainly.Controllers
         private readonly IEmailSender _emailSender;
 
         public AuthenticationController(UserManager<User> userManager,
-                RoleManager<IdentityRole<int>> roleManager,
-                IConfiguration config,
-                AppDbContext context,
-                IEmailSender emailSender)
+            RoleManager<IdentityRole<int>> roleManager,
+            IConfiguration config,
+            AppDbContext context,
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -40,7 +41,6 @@ namespace Chainly.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto model)
         {
-            
             var company = await _context.Companies
                 .FirstOrDefaultAsync(c => c.Name.ToLower() == model.CompanyName.ToLower());
 
@@ -57,7 +57,7 @@ namespace Chainly.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            
+
             var user = new User
             {
                 UserName = model.Email,
@@ -71,10 +71,10 @@ namespace Chainly.Controllers
             if (!result.Succeeded)
                 return BadRequest(result.Errors);
 
-            
+
             string role;
 
-            
+
             var usersInCompany = await _userManager.Users.CountAsync(u => u.CompanyId == company.Id);
 
             if (usersInCompany == 1)
@@ -83,22 +83,20 @@ namespace Chainly.Controllers
             }
             else
             {
-                
                 if (!string.IsNullOrEmpty(model.Role))
                 {
-                    
-                    var currentUser = await _userManager.GetUserAsync(User); 
+                    var currentUser = await _userManager.GetUserAsync(User);
                     var currentRoles = await _userManager.GetRolesAsync(currentUser);
                     if (currentRoles.Contains("Manager") && (model.Role == "Manager" || model.Role == "Employee"))
                         role = model.Role;
                     else
-                        role = "Employee"; 
+                        role = "Employee";
                 }
                 else
-                    role = "Employee"; 
+                    role = "Employee";
             }
 
-            
+
             if (!await _roleManager.RoleExistsAsync(role))
             {
                 await _roleManager.CreateAsync(new IdentityRole<int>(role));
@@ -122,6 +120,7 @@ namespace Chainly.Controllers
 
             return Unauthorized("Invalid login attempt");
         }
+
         [HttpPost("forget-password")]
         public async Task<IActionResult> GenerateOTP([FromBody] GenerateOtpRequest otpRequest)
         {
@@ -164,6 +163,7 @@ namespace Chainly.Controllers
 
             return BadRequest("Invalid OR Expired OTP.");
         }
+
         [HttpPost("reset-password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
         {
@@ -212,21 +212,21 @@ namespace Chainly.Controllers
             var roles = await _userManager.GetRolesAsync(user);
 
             var claims = new List<Claim>
-                {
-                    new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                    new Claim("companyId", user.CompanyId.ToString())
-                };
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("companyId", user.CompanyId.ToString())
+            };
 
 
             foreach (var role in roles)
-{
-    claims.Add(new Claim(ClaimTypes.Role, role));
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
 
-    claims.AddRange((await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role)))
-        .Where(c => c.Type == "Permission")
-        .Select(c => new Claim("Permission", c.Value)));
-}
+                claims.AddRange((await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role)))
+                    .Where(c => c.Type == CustomClaimTypes.Permission)
+                    .Select(c => new Claim(CustomClaimTypes.Permission, c.Value)));
+            }
 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
@@ -241,6 +241,5 @@ namespace Chainly.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
     }
 }

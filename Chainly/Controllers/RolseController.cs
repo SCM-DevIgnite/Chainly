@@ -63,7 +63,7 @@ namespace Chainly.Controllers
             var permissions = allPermissions.Select(p => new
             {
                 Name = p,
-                IsAssigned = roleClaims.Any(c => c.Type == "Permission" && c.Value == p)
+                IsAssigned = roleClaims.Any(c => c.Type == CustomClaimTypes.Permission && c.Value == p)
             });
 
             return Ok(new
@@ -87,7 +87,7 @@ namespace Chainly.Controllers
                 await _roleManager.RemoveClaimAsync(role, claim);
 
             foreach (var permission in selectedPermissions)
-                await _roleManager.AddClaimAsync(role, new Claim("Permission", permission));
+                await _roleManager.AddClaimAsync(role, new Claim(CustomClaimTypes.Permission, permission));
 
             return Ok(new { message = "Permissions updated successfully" });
         }

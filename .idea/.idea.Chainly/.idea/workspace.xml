@@ -9,7 +9,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1f6f7ecf-157a-4d27-aeb5-f549e6b38ae8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chainly/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chainly/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chainly.Data/Constants/Permissions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/Constants/Permissions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chainly.Data/Helpers/DBIntializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly.Data/Helpers/DBIntializer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chainly/Controllers/AuthenticationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly/Controllers/AuthenticationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chainly/Controllers/RolseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly/Controllers/RolseController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chainly/Filters/PermissionAuthorizationHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chainly/Filters/PermissionAuthorizationHandler.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +30,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f97a7aacf07f4dcfb4b5abaf07ce590918930/_065bf/ClaimTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Roaming/Microsoft/UserSecrets/7f69db6f-fb7e-443d-96b3-6baac791fa89/secrets.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/AppData/Roaming/Microsoft/UserSecrets/99c0c631-136b-43ec-9418-fde1babd3b61/secrets.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chainly.Data/Constants/CustomClaimTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Maryam/RiderProjects/Chainly/Chainly.Data/Helpers/DBIntializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Maryam/RiderProjects/Chainly/Chainly/Controllers/AuthenticationController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chainly/Filters/PermissionAuthorizationHandler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1756498300052</updated>
       <workItem from="1756498301271" duration="841000" />
-      <workItem from="1756499172225" duration="10192000" />
+      <workItem from="1756499172225" duration="11540000" />
     </task>
     <servers />
   </component>

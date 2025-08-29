@@ -87,8 +87,8 @@ namespace Chainly.Data.Helpers
 
             foreach (var permission in allPermissions)
             {
-                if (!existingClaims.Any(c => c.Type == "Permission" && c.Value == permission))
-                    await roleManager.AddClaimAsync(role, new Claim("Permission", permission));
+                if (!existingClaims.Any(c => c.Type == CustomClaimTypes.Permission && c.Value == permission))
+                    await roleManager.AddClaimAsync(role, new Claim(CustomClaimTypes.Permission, permission));
             }
         }
     }
