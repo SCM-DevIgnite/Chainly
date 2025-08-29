@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chainly.Data.MailService
 {
-    public class EmailConfigration
+    public class EmailConfiguration
     {
         public string From { get; set; }
         public string SmtpServer { get; set; }

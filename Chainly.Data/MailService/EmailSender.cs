@@ -6,10 +6,10 @@ namespace Chainly.Data.MailService
 {
     public class EmailSender : IEmailSender
     {
-        private readonly EmailConfigration _emailConfiguration;
-        public EmailSender(EmailConfigration emailConfigration)
+        private readonly EmailConfiguration _emailConfiguration;
+        public EmailSender(EmailConfiguration emailConfiguration)
         {
-            _emailConfiguration = emailConfigration;
+            _emailConfiguration = emailConfiguration;
         }
         public async Task SendEmailAsync(EmailMessage message)
         {

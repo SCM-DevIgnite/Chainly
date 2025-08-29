@@ -219,7 +219,15 @@ namespace Chainly.Controllers
                 };
 
 
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+
+                claims.AddRange((await _roleManager.GetClaimsAsync(await _roleManager.FindByNameAsync(role)))
+                    .Where(c => c.Type == "Permission")
+                    .Select(c => new Claim("Permission", c.Value)));
+            }
+
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
